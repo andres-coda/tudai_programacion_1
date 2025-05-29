@@ -1,18 +1,9 @@
-## Getting Started
+Estos son los ejercicios de la practica 5 de Programación 1.
+Detalles a tener en cuenta:
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Estan todos organizados en un solo menu, por eso existe un solo main y esta en el archivo menu.java.
+Las constantes estan en el menu, y pasan por parametros a los metodos submenu de cada ejercicio.
+El ejercicio 4 y 5 son arreglos de números enteros, porque ya estaba cargado, y caracteres los tenía que cargar.
+El max es una constante unica que la voy cambiando a mano y depende del último ejercicio que realice.
 
-## Folder Structure
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
