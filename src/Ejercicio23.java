@@ -2,6 +2,7 @@
  23. Hacer un programa que devuelva la posición de inicio y fin de la
 primera secuencia de números distinta de ceros.
  */
+
 public class Ejercicio23 {
     public static void subMenu(int[] ar, int max){
         Ejercicio1.mostrarArreglo(ar, max);

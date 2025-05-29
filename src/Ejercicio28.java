@@ -4,17 +4,12 @@ ocurrencias de una secuencia patrón dada por otro arreglo.
  */
 public class Ejercicio28 {
     public static void subMenu(int[] ar, int max){
-        int[] arCantPos = new int[max];
-        int[] secEliminar= new int[max];
+        int[] secEliminar= {7,9};
+        final int MAXSEC=2;
         Ejercicio1.mostrarArreglo(ar, max);
+        Ejercicio1.mostrarArreglo(secEliminar, 2);
 
-        int maxPos=Ejercicio27.cantPosSecuencia(ar, max, arCantPos);
-
-        cargarSecuenciaMax(secEliminar, max);
-
-        eliminarSecuenciaCoincidente(ar, secEliminar, arCantPos, maxPos);
-
-        Ejercicio1.mostrarArreglo(arCantPos, maxPos);
+        eliminarSecuenciaCoincidente(ar, secEliminar, max, MAXSEC);
 
         Ejercicio1.mostrarArreglo(ar, max);
         Menu.pausarConsola();
@@ -31,22 +26,26 @@ public class Ejercicio28 {
         }
     }
 
-    public static boolean compararSecuencia(int[]ar, int sec[], int max, int pos){
+    public static boolean compararSecuencia(int[]ar, int sec[], int max, int pos, int maxSec){
         int i=pos;
         int j=0;
-        int maxSec=Ejercicio23.finSecuencia(sec, max, 0)+1;
-        while(i<max && max==maxSec && sec[j]==ar[i]){
+        while(i<max && max-pos+1==maxSec && sec[j]==ar[i]){
             i++;
             j++;
         }
         return !(i<max);
     }
 
-    public static void eliminarSecuenciaCoincidente(int[]ar, int[]sec, int[] arPos, int maxPos){
-        for(int i=0; i<maxPos; i++){
-            if (compararSecuencia(ar, sec, arPos[i]+arPos[i+1], arPos[i+1])){
-                Ejercicio27.eliminarSecuencia(ar, arPos[i+1]+arPos[i], arPos[i+1]);
-            }
+    public static void eliminarSecuenciaCoincidente(int[]ar, int[]sec, int max, int maxSec){
+        int fin=0;
+        while(fin<max) {
+            int inicio=Ejercicio23.inicioSecuencia(ar, max, fin);
+            fin= Ejercicio23.finSecuencia(ar, max, inicio);
+            if(compararSecuencia(ar, sec, fin, inicio, maxSec)){
+                Ejercicio27.eliminarSecuencia(ar, fin, inicio, max);
+                fin=inicio;
+            } 
+            fin++;
         }
     }
 }

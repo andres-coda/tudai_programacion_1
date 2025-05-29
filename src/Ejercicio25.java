@@ -4,22 +4,41 @@ anteúltima secuencia de números distintos de ceros.
  */
 public class Ejercicio25 {
     public static void subMenu(int[] ar, int max){
-        final int[] arPosiciones= new int[max];
         Ejercicio1.mostrarArreglo(ar, max);
-                
-        int maxPos = posicionesSecuenciaMax(ar, max, arPosiciones);
-        
-        if(maxPos>4){
-            System.out.println("La anteultima secueencia inicia en la posición "+arPosiciones[maxPos-4]);
-            System.out.println("La anteultima secueencia termina en la posición "+arPosiciones[maxPos-3]);
-        } else {
-            System.out.println("Hay solo una secuencia, que es la primera y la última, no existe anteúltima secuencia");  
-        }
-
-        System.out.println("Arreglo posiciones: ");
-        Ejercicio1.mostrarArreglo(arPosiciones, maxPos);
+        int inicio =anteUltimaSecuenciasInicial(ar, max);
+        System.err.println("El inicio de la anteúltima secuencia es: "+ inicio);
+        System.err.println("El final de la anteúltima secuencia es: "+ Ejercicio23.finSecuencia(ar, max, inicio));
         Menu.pausarConsola();        
     }
+
+    // recorrer el arreglo al reves. Segunda secuencia. 
+
+    public static int anteUltimaSecuenciasInicial(int[] ar, int max) {
+        int pos=max;
+        for (int i=0; i<2; i++){
+            pos=finSecuenciaInvertida(ar, pos-1);     
+            pos=inicioSecuenciaInvertida(ar, pos);
+        }
+        return pos;
+    }
+
+    public static int inicioSecuenciaInvertida(int[] ar, int pos){
+        int i=pos;
+        while(i>0 && ar[i]!=0){
+            i--;
+        }
+        return i+1;
+    }
+
+    public static int finSecuenciaInvertida(int[] ar, int pos){
+        int i=pos;
+        while(i>0 && ar[i]==0){
+            i--;
+        }
+        return i;
+    }
+
+
 
     public static int posicionesSecuenciaMax(int[] ar, int max, int[] arPos){
         int inicio=Ejercicio23.inicioSecuencia(ar, max, 0);
